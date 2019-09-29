@@ -1,8 +1,6 @@
 import React from 'react';
 import { render } from "react-dom";
-import { TextInput } from "./lib";
-import { Button } from "./lib"
-import SelectInput from "./lib/select-input/index";
+import { TextInput, Button, SelectInput, Card } from "./lib";
 import './app.css'
 import './lib/assets/styles.scss'
 const test = () => {
@@ -12,7 +10,9 @@ const App = () => (
   <div className="app">
     <div className="content">
     <h1>Hello React</h1>
-
+    <section>
+      <Card  text="this is some content" title="This is a title"/>
+    </section>
     <section>
       <TextInput label="Email Address" placeholder="name@example.com" />
       <SelectInput options={['test1', 'test2', 'test3']}/>
