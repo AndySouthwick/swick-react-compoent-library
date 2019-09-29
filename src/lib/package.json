@@ -1,0 +1,11 @@
+{
+  "name": "swick-react-lib",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "<Andrew Southwick asouthwick01@gmail.com>",
+  "license": "ISC"
+}

@@ -1,0 +1,39 @@
+.input-wrapper{
+  position: relative;
+  width: 100%;
+  height: 88px;
+
+}
+.input {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.inset-icon {
+  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 44px;
+}
+input {
+  border: solid #353535 .5px;
+  padding-left: 8px;
+  height: 40px;
+  width: 100%;
+  border-radius: 4px;
+  margin: 8px 0 24px 0;
+}
+.warning {
+  margin: 8px 0 32px 0;
+}
+.alert {
+  margin: 8px 0 32px 0;
+}
+.valid {
+  margin: 8px 0 32px 0;
+}
+.active {
+  margin: 8px 0 32px 0;
+}

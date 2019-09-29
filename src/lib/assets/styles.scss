@@ -1,0 +1,33 @@
+@import 'style-params';
+@import 'responsive-params';
+body{@include font-body;
+  //padding-top: 24px;
+  margin: 0;
+}
+h1{
+  @include font-desktop-1;
+}
+h2{
+  @include font-desktop-2;
+}
+h3{
+  @include font-desktop-3;
+}
+h4{@include font-desktop-4}
+@media(max-width: $md-width){
+  h1{@include font-mobile-1}
+  h2{@include font-mobile-2}
+  h3{@include font-mobile-3}
+  h4{@include font-mobile-4}
+}
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body{
+  overflow-x: hidden;
+}
+:focus{
+  outline:none;
+}
