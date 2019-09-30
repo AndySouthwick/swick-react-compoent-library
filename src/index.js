@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from "react-dom";
-import { TextInput, Button, SelectInput, Card } from "./lib";
+import { TextInput, Button, SelectInput, Card, CoverHero } from "./lib";
 import './app.css'
 import './lib/assets/styles.scss'
 const test = () => {
@@ -8,10 +8,35 @@ const test = () => {
 }
 const App = () => (
   <div className="app">
+    <section>
+      <CoverHero heroArray={[{
+        img: 'https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png',
+        title: 'this is a title1',
+        subTitle: 'this is a sub title1',
+        buttonClass: 'button-large-primary',
+        buttonText: 'this is some button text1',
+      },
+        {
+          img: 'https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png',
+          title: 'this is a title 2',
+          subTitle: 'this is a sub title 2',
+          buttonClass: 'button-large-secondary',
+          buttonText: 'this is some button text 2',
+        },
+        {
+          img: 'https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png',
+          title: 'this is a title 3',
+          subTitle: 'this is a sub title 3',
+          buttonClass: 'button-large-tertiary',
+          buttonText: 'this is some button text 3',
+        }
+      ]}/>
+    </section>
     <div className="content">
     <h1>Hello React</h1>
+
     <section>
-      <Card  text="this is some content" title="This is a title"/>
+      <Card  text="this is some content" title="This is a title" buttonClass="button-large-primary" buttonText="Submit"/>
     </section>
     <section>
       <TextInput label="Email Address" placeholder="name@example.com" />

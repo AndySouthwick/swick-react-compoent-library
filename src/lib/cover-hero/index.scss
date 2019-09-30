@@ -1,0 +1,49 @@
+.cover-hero{
+    width: 100vw;
+    height: 700px;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-box{
+    margin-top: 272px;
+}
+
+.justify-start {
+    margin-top: auto;
+}
+
+.slider-selector {
+    z-index: 999;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    ul {
+        padding: 0;
+        z-index: 999;
+        width: 100%;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        li {
+            margin-right: 16px;
+            div {
+                background-color: #DDDDDD;
+                border: black solid 0.5px;
+                z-index: 999;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+            }
+            div.active {
+                background-color: #353535;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+            }
+        }
+    }
+}
