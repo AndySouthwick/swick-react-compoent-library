@@ -3,44 +3,43 @@ import './index.scss'
 import Button from '../button'
 export default class CoverHero extends Component {
   state = {
-  img: this.props.heroArray[0].img,
-  title: this.props.heroArray[0].title,
-  subTitle: this.props.heroArray[0].subTitle,
-  buttonClass: this.props.heroArray[0].buttonClass,
-  buttonText:  this.props.heroArray[0].buttonText,
   heroArray: [],
-  slideInterval: 1,
+  slideInterval: 0,
   pauseStart: 'Pause'
   }
 
   componentDidMount(){
+    this.intervalInfo(this.state.slideInterval)
   }
   componentWillUnmount(){
   }
 
-
-  intervalInfo = () => {
-    if(this.state.slideInterval > this.props.heroArray.length - 1){
-      this.setState({
-        slideInterval: 0
-      })
-    }
+  intervalInfo = (i) => {
     this.setState({
-      img: this.props.heroArray[ this.state.slideInterval].img,
-      title: this.props.heroArray[ this.state.slideInterval].title,
-      subTitle:  this.props.heroArray[ this.state.slideInterval].subTitle,
-      buttonClass: this.props.heroArray[ this.state.slideInterval].buttonClass,
-      buttonText: this.props.heroArray[ this.state.slideInterval].buttonText,
-      slideInterval: this.state.slideInterval + 1
+      img: this.props.heroArray[i].img,
+      title: this.props.heroArray[i].title,
+      subTitle:  this.props.heroArray[i].subTitle,
+      buttonClass: this.props.heroArray[i].buttonClass,
+      buttonText: this.props.heroArray[i].buttonText,
     })
   }
 
-  timeIntervalForSlide =  setInterval(this.intervalInfo, 5000)
+  timeIntervalForSlide =  setInterval(() => {
+    this.setState({
+      slideInterval: this.state.slideInterval + 1
+    })
+    this.intervalInfo(this.state.slideInterval)
+  }, 5000)
 
 
   pauseStartSlide = () => {
     if(this.state.pauseStart === 'Start'){
-      this.timeIntervalForSlide =  setInterval(this.intervalInfo, 5000)
+      this.timeIntervalForSlide = setInterval(() => {
+        this.setState({
+          slideInterval: this.state.slideInterval + 1
+        })
+        this.intervalInfo(this.state.slideInterval)
+      }, 5000)
       console.log('start')
       this.setState({
         pauseStart: 'Pause'
@@ -49,13 +48,18 @@ export default class CoverHero extends Component {
     if(this.state.pauseStart === 'Pause'){
       console.log('pause')
       clearInterval(this.timeIntervalForSlide)
-
       this.setState({
         pauseStart: 'Start'
       })
     }
   }
 
+  setIndexOnClick = (i) => {
+    this.intervalInfo(i)
+    this.setState({
+      slideInterval: i
+    })
+  }
 
 
 
@@ -64,10 +68,11 @@ export default class CoverHero extends Component {
       <div className="slider-selector justify-start">
       <ul>
         {this.props.heroArray.map((e, i) => {
-          if(this.state.slideInterval === i + 1){
-            return  <li key={i}><div className="active"></div></li>
+          if(i === this.state.slideInterval){
+            console.log('conditional',  i)
+            return  <li key={i}><div className="active" onClick={() => this.setIndexOnClick(i)}></div></li>
           }else{
-            return <li key={i}> <div></div> </li>
+            return <li key={i}> <div onClick={() => this.setIndexOnClick(i)}></div> </li>
           }
 
         })}
@@ -79,8 +84,14 @@ export default class CoverHero extends Component {
   }
   render(){
 
+    if(this.state.slideInterval >= this.props.heroArray.length){
+      this.setState({
+        slideInterval: 0
+      })
+    }
+
     console.log('slide interval', this.state.slideInterval)
-    console.log('array length', this.props.heroArray.length - 1)
+    // console.log('array length', this.props.heroArray.length)
     return(
       <div className="cover-hero" style={{backgroundImage: 'url(' + this.state.img + ')',
                                           backgroundRepeat: 'no-repeat'}}>
